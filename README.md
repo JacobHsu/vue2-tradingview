@@ -15,6 +15,21 @@ public\charting_library
 
 [TradingView 报错 'define' is not defined](https://blog.csdn.net/misn_wink/article/details/107066265)
 
+## local
+
+cmd
+
+C:\vue2-tradingview>`serve -d dist`  
+UPDATE AVAILABLE The latest version of `serve` is 13.0.2
+
+   ┌─────────────────────────────────────────────────┐
+   │                                                 │
+   │   Serving!                                      │
+   │                                                 │
+   │   - Local:            http://localhost:5000     │
+   │   - On Your Network:  http://172.28.16.1:5000   │
+   │                                                 │!
+
 ## Project setup
 ```
 yarn install
