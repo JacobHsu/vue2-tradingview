@@ -11,6 +11,13 @@
 vitelabs / vite-web-wallet / [charting_library](https://github.com/vitelabs/vite-web-wallet/tree/master/charting_library)
 public\charting_library  
 
+
+tradingview / [charting-library-examples](https://github.com/tradingview/charting-library-examples/blob/master/vuejs/src/components/TVChartContainer.vue)
+
+## vite-web-wallet
+
+vite-web-wallet\srcPC\pages\trade\center\view\tradingView\kline.js
+
 ## Debug
 
 [TradingView 报错 'define' is not defined](https://blog.csdn.net/misn_wink/article/details/107066265)

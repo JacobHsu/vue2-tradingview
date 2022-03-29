@@ -2,11 +2,14 @@ import { widget as TvWidget } from '../../../../public/charting_library/charting
 import Vue from "vue";
 import Datafeeds from './datafeed'
 import TestData from "./data";
+import { commonConfig } from "./tvconfig" // , theme0Config
 
 const doc = dom => document.querySelector(dom);
 const docEle = document.documentElement;
 
 const metaInterval = ["1D", "1W", "1M"];
+
+
 
 export default {
   widget: null,
@@ -26,35 +29,9 @@ export default {
     this.widget = new TvWidget({
       symbol: options.symbol,
       interval: options.interval,
-      container_id: options.id,
       datafeed: this.dataFeed,
-      library_path: '/charting_library/',
-      fullscreen: false,
-      disabled_features: [
-        'header_chart_type',
-        'header_symbol_search',
-        'volume_force_overlay',
-        'header_resolutions',
-        'header_settings',
-        // 'edit_buttons_in_legend',
-        'header_compare',
-        'header_undo_redo',
-        'header_screenshot',
-        'use_localstorage_for_settings',
-        'timeframes_toolbar',
-        'header_widget'
-      ],
-      enabled_features: [
-        "header_fullscreen_button",
-        "dont_show_boolean_study_arguments",
-        "remove_library_container_border",
-        "save_chart_properties_to_local_storage",
-        "side_toolbar_in_fullscreen_mode",
-        "hide_last_na_study_output",
-        "constraint_dialogs_movement",
-        "keep_left_toolbar_visible_on_small_screens",
-        "hide_left_toolbar_by_default",
-      ],
+      ...commonConfig,
+      // ...theme0Config,
       numeric_formatting: {
         decimal_sign: '.'
       },
@@ -81,98 +58,7 @@ export default {
         "volume.volume.transparency": "53",
         // "volume.volume ma.plottype": "line"
       },
-      overrides: {
-        "volumePaneSize": "medium",
-        "symbolWatermarkProperties.color": "rgba(0,0,0, 0)",
-        "paneProperties.background": options.chartColor,
-        "paneProperties.vertGridProperties.color": options.gridColor,
-        "paneProperties.horzGridProperties.color": options.gridColor,
-        "paneProperties.crossHairProperties.color": options.crossover,
-        "paneProperties.crossHairProperties.style": 'LINESTYLE_DASHED',
-        "mainSeriesProperties.style": options.mainSeriesProperties,
-        "mainSeriesProperties.showCountdown": false,
-        "scalesProperties.showSeriesLastValue": true,
-        "mainSeriesProperties.visible": true,
-        "mainSeriesProperties.showPriceLine": true,
-        "mainSeriesProperties.priceLineWidth": 1,
-        "mainSeriesProperties.minTick": "default",
-        "mainSeriesProperties.extendedHours": false,
-        "editorFontsList": ["Lato", "Arial", "Verdana", "Courier New", "Times New Roman"],
-        "paneProperties.topMargin": 10,
-        "paneProperties.bottomMargin": 5,
-        "paneProperties.leftAxisProperties.autoScale": true,
-        "paneProperties.leftAxisProperties.autoScaleDisabled": false,
-        "paneProperties.leftAxisProperties.percentage": false,
-        "paneProperties.leftAxisProperties.percentageDisabled": false,
-        "paneProperties.leftAxisProperties.log": false,
-        "paneProperties.leftAxisProperties.logDisabled": false,
-        "paneProperties.leftAxisProperties.alignLabels": true,
-        "paneProperties.legendProperties.showStudyArguments": true,
-        "paneProperties.legendProperties.showStudyTitles": true,
-        "paneProperties.legendProperties.showStudyValues": true,
-        "paneProperties.legendProperties.showSeriesTitle": true,
-        "paneProperties.legendProperties.showSeriesOHLC": true,
-        "scalesProperties.showLeftScale": false,
-        "scalesProperties.showRightScale": true,
-        "scalesProperties.backgroundColor": options.chartColor,
-        "scalesProperties.lineColor": options.lineColor,
-        "scalesProperties.textColor": options.textColor,
-        "scalesProperties.scaleSeriesOnly": true,
-        "mainSeriesProperties.priceAxisProperties.autoScale": true,
-        "mainSeriesProperties.priceAxisProperties.autoScaleDisabled": false,
-        "mainSeriesProperties.priceAxisProperties.percentage": false,
-        "mainSeriesProperties.priceAxisProperties.percentageDisabled": false,
-        "mainSeriesProperties.priceAxisProperties.log": false,
-        "mainSeriesProperties.priceAxisProperties.logDisabled": false,
-        "mainSeriesProperties.candleStyle.upColor": options.riseColor,
-        "mainSeriesProperties.candleStyle.downColor": options.fallColor,
-        "mainSeriesProperties.candleStyle.drawWick": true,
-        "mainSeriesProperties.candleStyle.drawBorder": false,
-        "mainSeriesProperties.candleStyle.borderColor": options.riseColor,
-        "mainSeriesProperties.candleStyle.borderUpColor": options.riseColor,
-        "mainSeriesProperties.candleStyle.borderDownColor": options.fallColor,
-        "mainSeriesProperties.candleStyle.wickColor": options.riseColor,
-        "mainSeriesProperties.candleStyle.wickUpColor": options.riseColor,
-        "mainSeriesProperties.candleStyle.wickDownColor": options.fallColor,
-        "mainSeriesProperties.candleStyle.barColorsOnPrevClose": false,
-        "mainSeriesProperties.hollowCandleStyle.upColor": options.riseColor,
-        "mainSeriesProperties.hollowCandleStyle.downColor": options.fallColor,
-        "mainSeriesProperties.hollowCandleStyle.drawWick": true,
-        "mainSeriesProperties.hollowCandleStyle.drawBorder": false,
-        "mainSeriesProperties.hollowCandleStyle.borderColor": options.riseColor,
-        "mainSeriesProperties.hollowCandleStyle.borderUpColor": options.riseColor,
-        "mainSeriesProperties.hollowCandleStyle.borderDownColor": options.fallColor,
-        "mainSeriesProperties.hollowCandleStyle.wickColor": options.riseColor,
-        "mainSeriesProperties.hollowCandleStyle.wickUpColor": options.riseColor,
-        "mainSeriesProperties.hollowCandleStyle.wickDownColor": options.fallColor,
-        "mainSeriesProperties.haStyle.upColor": options.riseColor,
-        "mainSeriesProperties.haStyle.downColor": options.fallColor,
-        "mainSeriesProperties.haStyle.drawWick": true,
-        "mainSeriesProperties.haStyle.drawBorder": false,
-        "mainSeriesProperties.haStyle.borderColor": options.riseColor,
-        "mainSeriesProperties.haStyle.borderUpColor": options.riseColor,
-        "mainSeriesProperties.haStyle.borderDownColor": options.fallColor,
-        "mainSeriesProperties.haStyle.wickColor": "#737375",
-        "mainSeriesProperties.haStyle.wickUpColor": options.riseColor,
-        "mainSeriesProperties.haStyle.wickDownColor": options.fallColor,
-        "mainSeriesProperties.haStyle.barColorsOnPrevClose": true,
-        "mainSeriesProperties.barStyle.upColor": options.riseColor,
-        "mainSeriesProperties.barStyle.downColor": options.fallColor,
-        "mainSeriesProperties.barStyle.barColorsOnPrevClose": false,
-        "mainSeriesProperties.barStyle.dontDrawOpen": true,
-        "mainSeriesProperties.lineStyle.color": "#0cbef3",
-        "mainSeriesProperties.lineStyle.linestyle": 0,
-        "mainSeriesProperties.lineStyle.linewidth": 1,
-        "mainSeriesProperties.lineStyle.priceSource": "close",
-        "mainSeriesProperties.areaStyle.color1": "#0cbef3",
-        "mainSeriesProperties.areaStyle.color2": "#0098c4",
-        "mainSeriesProperties.areaStyle.linecolor": "#0cbef3",
-        "mainSeriesProperties.areaStyle.linestyle": 0,
-        "mainSeriesProperties.areaStyle.linewidth": 1,
-        "mainSeriesProperties.areaStyle.priceSource": "close",
-        "mainSeriesProperties.areaStyle.transparency": 80,
-      },
-      custom_css_url: 'chat.css?v=20190802'
+
     });
 
     // MA线 移动平均线
@@ -335,3 +221,4 @@ export default {
     this.widget.chart().executeActionById(actionId);
   },
 }
+

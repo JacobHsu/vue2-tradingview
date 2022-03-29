@@ -35,6 +35,16 @@ export let TvConfigInfo = {
   mainSeriesProperties: 1
 };
 
+export const tvThemeConfig = {
+  chartColor: "#1a2636", // 图表颜色
+  gridColor: "#243142", // 网格颜色
+  lineColor: "#2E3947", // xy轴线条颜色
+  textColor: "#545D69", // 文字颜色
+  crossover: "#4F5E72", // 十字交叉颜色
+  riseColor: "#38AF75", // 涨颜色
+  fallColor: "#E75A5B", // 停颜色
+  mainSeriesProperties: 1
+}
 
 // k线图的颜色配置
 export const handleKlineColorConfig = (colConfig) => {
